@@ -1,0 +1,62 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import MobileCTA from "@/components/layout/MobileCTA";
+import AICustomerSupport from "@/components/ai/AICustomerSupport";
+import FloatingQuickContact from "@/components/ui/FloatingQuickContact";
+import { ClinicDataProvider } from "@/context/ClinicDataContext";
+import { CLINIC_DATA } from "@/constants/business";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: {
+    default: "Nitya Physiotherapy | The Best Physiotherapy in Gwalior",
+    template: `%s | The Best Physiotherapy in Gwalior - ${CLINIC_DATA.shortName}`,
+  },
+  description: `Nitya Physiotherapy provides the best physiotherapy in Gwalior & Thatipur. Clinical joint & back pain rehabilitation, sports injury care, and home visit physiotherapy by ${CLINIC_DATA.practitioner.name} (${CLINIC_DATA.practitioner.qualifications}).`,
+  keywords: [
+    "The Best Physiotherapy in Gwalior",
+    "Best Physiotherapy in Gwalior",
+    "Best Physiotherapist in Gwalior",
+    "Best Physiotherapy Clinic in Thatipur Gwalior",
+    "Best Home Physiotherapy in Gwalior",
+    "Physiotherapy in Gwalior",
+    "Physiotherapist in Thatipur Gwalior",
+    "Home physiotherapy Gwalior",
+    "Sports physiotherapy Gwalior",
+    "Dr Hemant Singh PT",
+    "Musculoskeletal physiotherapy Gwalior"
+  ],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
+  metadataBase: new URL("https://nityaphysiotherapy.com"),
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} bg-white text-slate-800 antialiased flex flex-col min-h-screen`}>
+        <ClinicDataProvider>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <MobileCTA />
+          {/* Floating WhatsApp & Direct Call Widget */}
+          <FloatingQuickContact />
+          {/* Floating Live AI Customer Support Assistant */}
+          <AICustomerSupport />
+        </ClinicDataProvider>
+      </body>
+    </html>
+  );
+}

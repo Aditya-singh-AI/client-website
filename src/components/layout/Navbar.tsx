@@ -36,7 +36,7 @@ export default function Navbar() {
         <div className="hidden xl:flex items-center gap-5 text-xs font-semibold text-slate-700">
           <Link href="/" className="hover:text-teal-700 transition">Home</Link>
           <Link href="/physiotherapist/dr-hemant-singh" className="hover:text-teal-700 transition">About Us</Link>
-          <Link href="/conditions/back-pain" className="hover:text-teal-700 transition">Services</Link>
+          <Link href="/services" className="hover:text-teal-700 transition">Services</Link>
           <Link href="/services/home-physiotherapy" className="hover:text-teal-700 transition">Home Visit</Link>
           <Link href="/gallery" className="hover:text-teal-700 transition">Gallery</Link>
           <Link href="/reviews" className="hover:text-teal-700 transition">Reviews</Link>
@@ -81,7 +81,7 @@ export default function Navbar() {
         <div className="lg:hidden border-b border-slate-200 bg-white px-5 pt-3 pb-6 space-y-2 text-sm font-medium text-slate-800 shadow-xl">
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-1.5">Home</Link>
           <Link href="/physiotherapist/dr-hemant-singh" onClick={() => setMobileMenuOpen(false)} className="block py-1.5">About Us</Link>
-          <Link href="/conditions/back-pain" onClick={() => setMobileMenuOpen(false)} className="block py-1.5">Our Services</Link>
+          <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 font-semibold text-teal-800">Our 23 Services</Link>
           <Link href="/services/home-physiotherapy" onClick={() => setMobileMenuOpen(false)} className="block py-1.5 text-teal-800 font-semibold">Home Visit Physiotherapy</Link>
           <Link href="/gallery" onClick={() => setMobileMenuOpen(false)} className="block py-1.5">Clinic Gallery</Link>
           <Link href="/reviews" onClick={() => setMobileMenuOpen(false)} className="block py-1.5">Patient Reviews</Link>

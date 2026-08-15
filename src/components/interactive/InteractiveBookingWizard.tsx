@@ -16,14 +16,23 @@ export default function InteractiveBookingWizard() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const submitEnquiryToAdmin = () => {
-    addEnquiry({
+    const payload = {
       name: patientName || "Patient Enquiry",
       phone: patientPhone || "Not Provided",
       serviceType: serviceType,
       area: areaInGwalior || "Gwalior",
       preferredDate: preferredDate || "Earliest Available",
       concern: concern || "General Physical Therapy Assessment",
-    });
+    };
+
+    addEnquiry(payload);
+
+    // Instant direct email notification to Dr. Hemant (nityahemantsingh@gmail.com)
+    fetch("/api/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).catch((err) => console.error("Email notification dispatch error:", err));
   };
 
   const handleWhatsAppDirect = () => {

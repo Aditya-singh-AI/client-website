@@ -18,14 +18,23 @@ export default function Footer() {
     e.preventDefault();
     if (!name || !phone) return;
 
-    addEnquiry({
+    const payload = {
       name,
       phone,
       serviceType,
       area: "Thatipur / Gwalior",
       preferredDate,
       concern: concern || "Appointment Request",
-    });
+    };
+
+    addEnquiry(payload);
+
+    // Instant direct email notification to Dr. Hemant (nityahemantsingh@gmail.com)
+    fetch("/api/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).catch((err) => console.error("Email notification dispatch error:", err));
 
     setSubmitted(true);
     setName("");

@@ -40,7 +40,7 @@ export default function DoctorPublishModal({ isOpen, onClose, onPostPublished }:
   const handleVerifyPin = (e: React.FormEvent) => {
     e.preventDefault();
     // Default PIN matches clinic last digits (15097)
-    if (pin === "15097" || pin === "1234") {
+    if (pin === "20266" || pin === "20262") {
       setIsAuthenticated(true);
       setPinError(false);
     } else {
@@ -142,12 +142,12 @@ export default function DoctorPublishModal({ isOpen, onClose, onPostPublished }:
             <div className="max-w-xs mx-auto space-y-2">
               <input
                 type="password"
-                placeholder="Enter PIN (Default: 15097)"
+                placeholder="Enter PIN"
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
                 className="w-full text-center text-sm font-bold tracking-widest px-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-700 outline-none"
               />
-              {pinError && <p className="text-xs text-rose-600 font-semibold">Incorrect PIN. Try 15097.</p>}
+              {pinError && <p className="text-xs text-rose-600 font-semibold">Incorrect PIN. Try Correct One.</p>}
               <button
                 type="submit"
                 className="w-full bg-teal-800 hover:bg-teal-900 text-white font-bold text-xs py-2.5 rounded-lg transition"

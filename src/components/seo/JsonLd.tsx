@@ -5,7 +5,7 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "PhysiotherapyClinic",
     "name": CLINIC_DATA.name,
-    "description": "Nitya Physiotherapy provides the best physiotherapy in Gwalior, Thatipur. Personalised musculoskeletal rehabilitation and home visit physiotherapy led by Dr. Hemant Singh PT (BPT).",
+    "description": "Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior, Thatipur. Personalised musculoskeletal rehabilitation and home visit physiotherapy led by Dr. Hemant Singh PT (BPT).",
     "telephone": CLINIC_DATA.contact.phone,
     "email": CLINIC_DATA.contact.email,
     "address": {

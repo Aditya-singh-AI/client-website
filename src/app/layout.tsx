@@ -13,23 +13,35 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Nitya Physiotherapy | The Best Physiotherapy in Gwalior",
-    template: `%s | The Best Physiotherapy in Gwalior - ${CLINIC_DATA.shortName}`,
+    default: "Nitya Physiotherapy | The Best Physiotherapy Clinic in Gwalior",
+    template: `%s | The Best Physiotherapy Clinic in Gwalior - ${CLINIC_DATA.shortName}`,
   },
-  description: `Nitya Physiotherapy provides the best physiotherapy in Gwalior & Thatipur. Clinical joint & back pain rehabilitation, sports injury care, and home visit physiotherapy by ${CLINIC_DATA.practitioner.name} (${CLINIC_DATA.practitioner.qualifications}).`,
+  description: `Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior & Thatipur. Clinical joint & back pain rehabilitation, sports injury care, and home visit physiotherapy by ${CLINIC_DATA.practitioner.name} (${CLINIC_DATA.practitioner.qualifications}).`,
   keywords: [
-    "The Best Physiotherapy in Gwalior",
-    "Best Physiotherapy in Gwalior",
+    "The Best Physiotherapy Clinic in Gwalior",
+    "Best Physiotherapy Clinic in Gwalior",
     "Best Physiotherapist in Gwalior",
     "Best Physiotherapy Clinic in Thatipur Gwalior",
     "Best Home Physiotherapy in Gwalior",
-    "Physiotherapy in Gwalior",
+    "Physiotherapy Clinic in Gwalior",
     "Physiotherapist in Thatipur Gwalior",
     "Home physiotherapy Gwalior",
     "Sports physiotherapy Gwalior",
     "Dr Hemant Singh PT",
     "Musculoskeletal physiotherapy Gwalior"
   ],
+  openGraph: {
+    title: "Nitya Physiotherapy | The Best Physiotherapy Clinic in Gwalior",
+    description: `Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior & Thatipur. Clinical joint & back pain rehabilitation, sports injury care, and home visit physiotherapy by ${CLINIC_DATA.practitioner.name} (${CLINIC_DATA.practitioner.qualifications}).`,
+    images: ["/logo.webp"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nitya Physiotherapy | The Best Physiotherapy Clinic in Gwalior",
+    description: `Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior & Thatipur. Clinical joint & back pain rehabilitation by ${CLINIC_DATA.practitioner.name}.`,
+    images: ["/logo.webp"],
+  },
   icons: {
     icon: "/logo.webp",
     shortcut: "/logo.webp",

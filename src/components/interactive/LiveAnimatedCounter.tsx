@@ -8,16 +8,20 @@ interface CounterProps {
   prefix?: string;
   suffix?: string;
   label: string;
-  sublabel: string;
+  sublabel?: string;
+  icon?: string;
+  iconClass?: string;
 }
 
 export default function LiveAnimatedCounter({
   end,
-  duration = 1800,
+  duration = 2000,
   prefix = "",
   suffix = "",
   label,
   sublabel,
+  icon,
+  iconClass = "text-teal-700",
 }: CounterProps) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -33,7 +37,7 @@ export default function LiveAnimatedCounter({
           const step = (timestamp: number) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            // Ease-out cubic animation
+            // Smooth ease-out cubic animation
             const easeOutProgress = 1 - Math.pow(1 - progress, 3);
             setCount(Math.floor(easeOutProgress * end));
 
@@ -47,7 +51,7 @@ export default function LiveAnimatedCounter({
           window.requestAnimationFrame(step);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
     if (ref.current) {
@@ -60,17 +64,20 @@ export default function LiveAnimatedCounter({
   return (
     <div
       ref={ref}
-      className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-teal-600 transition-all duration-300 text-center flex flex-col justify-between"
+      className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-teal-600 transition-all duration-300 text-center flex flex-col justify-between items-center group"
     >
-      <div>
-        <div className="text-3xl sm:text-4xl font-black text-teal-900 tracking-tight flex items-center justify-center gap-0.5">
-          <span>{prefix}</span>
-          <span>{count}</span>
-          <span className="text-teal-600">{suffix}</span>
+      {icon && (
+        <div className={`text-2xl mb-1 group-hover:scale-110 transition duration-300 ${iconClass}`}>
+          {icon}
         </div>
-        <p className="text-sm font-bold text-slate-900 mt-2">{label}</p>
+      )}
+      <div className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight flex items-center justify-center">
+        <span>{prefix}</span>
+        <span>{count}</span>
+        <span className="text-slate-950">{suffix}</span>
       </div>
-      <p className="text-xs text-slate-500 mt-1">{sublabel}</p>
+      <p className="text-xs font-bold text-slate-600 mt-1">{label}</p>
+      {sublabel && <p className="text-[11px] text-slate-400 mt-0.5">{sublabel}</p>}
     </div>
   );
 }

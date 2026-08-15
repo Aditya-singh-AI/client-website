@@ -3,11 +3,11 @@ import { CLINIC_DATA } from "@/constants/business";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import JsonLd from "@/components/seo/JsonLd";
 
-import LiveAnimatedCounter from "@/components/interactive/LiveAnimatedCounter";
 import LiveStatusBadge from "@/components/interactive/LiveStatusBadge";
 import LiveBlogCarousel from "@/components/interactive/LiveBlogCarousel";
 import NewsTickerBanner from "@/components/interactive/NewsTickerBanner";
 import ComprehensiveServicesSection from "@/components/home/ComprehensiveServicesSection";
+import RecommendedAfterHero from "@/components/home/RecommendedAfterHero";
 
 export default function HomePage() {
   const faqs = [
@@ -109,111 +109,8 @@ export default function HomePage() {
       {/* LIVE NEWS CHANNEL STYLE TICKER BANNER */}
       <NewsTickerBanner />
 
-      {/* HERO BANNER SECTION */}
-      <section className="relative bg-gradient-to-b from-teal-50/70 to-white pt-10 pb-16 lg:pt-16 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Col Content */}
-            <div className="lg:col-span-7 space-y-5">
-              <div className="mb-2">
-                <LiveStatusBadge />
-              </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-[1.15]">
-                The Best Physiotherapy Clinic in Gwalior — <span className="text-teal-800">Clinic & Home Visits</span>
-              </h1>
-              <p className="text-slate-700 text-base sm:text-lg leading-relaxed max-w-xl">
-                We help you move better, feel better and live a pain-free life. Providing the best physiotherapy, thorough clinical assessment, and evidence-based exercise rehabilitation in Thatipur, Gwalior.
-              </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap gap-3 pt-2">
-                <a
-                  href={`tel:${CLINIC_DATA.contact.rawPhone}`}
-                  className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition inline-flex items-center gap-2 text-sm"
-                >
-                  <span>📞</span> Call Now
-                </a>
-                <a
-                  href={`https://wa.me/${CLINIC_DATA.contact.rawPhone}?text=Hello%20Dr.%20Hemant%20Singh%20PT,%20I%20would%20like%20to%20inquire%20about%20physiotherapy%20consultation.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-2 border-emerald-600 font-bold px-6 py-3.5 rounded-xl transition inline-flex items-center gap-2 text-sm"
-                >
-                  <span>💬</span> WhatsApp
-                </a>
-                <Link
-                  href="/book-appointment"
-                  className="bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 font-bold px-6 py-3.5 rounded-xl shadow-sm transition inline-flex items-center gap-2 text-sm"
-                >
-                  <span>📅</span> Book Appointment
-                </Link>
-              </div>
-
-              {/* Clinic Info Strip Bar */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-200 text-xs">
-                <div className="flex items-start gap-2 text-slate-700">
-                  <span className="text-teal-700 text-base">📍</span>
-                  <div>
-                    <strong className="block text-slate-900 font-bold">Clinic Location</strong>
-                    <span>Thatipur, Gwalior – 474011</span>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2 text-slate-700">
-                  <span className="text-teal-700 text-base">🕒</span>
-                  <div>
-                    <strong className="block text-slate-900 font-bold">Timings</strong>
-                    <span>9:00 AM - 8:00 PM (Mon - Sat)</span>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2 text-slate-700">
-                  <span className="text-teal-700 text-base">🏠</span>
-                  <div>
-                    <strong className="block text-slate-900 font-bold">Home Visit</strong>
-                    <span>Available in Gwalior</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Col: Hero Solo Photo Visual Card */}
-            <div className="lg:col-span-5">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 group">
-                <div className="aspect-[4/3] sm:aspect-[4/3] relative overflow-hidden">
-                  <img
-                    src="/images/dr-hemant-solo.jpg"
-                    alt="Dr. Hemant Singh PT treating patient in clinic"
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/15 to-transparent pointer-events-none" />
-                  
-                  {/* Floating Doctor Badge Top */}
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-teal-100 flex items-center gap-2.5">
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                    </span>
-                    <div>
-                      <p className="text-[11px] font-black text-slate-900 leading-tight">Dr. Hemant Singh PT</p>
-                      <p className="text-[9px] font-semibold text-teal-700">Lead Physiotherapist (BPT)</p>
-                    </div>
-                  </div>
-
-                  {/* Floating Clinical Feature Badge Bottom */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md p-3.5 rounded-2xl border border-teal-500/30 text-white shadow-xl flex justify-between items-center">
-                    <div className="space-y-0.5">
-                      <p className="text-xs font-bold text-teal-300">1-on-1 Clinical Assessment & Rehab</p>
-                      <p className="text-[10px] text-slate-300">Targeted Joint & Musculoskeletal Physical Therapy</p>
-                    </div>
-                    <span className="bg-emerald-600/90 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-lg">
-                      Gwalior
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* RECOMMENDED AFTER HERO DESIGN & SPECIALTIES & METRICS STRIP */}
+      <RecommendedAfterHero />
 
       {/* COMPREHENSIVE 23 PHYSIOTHERAPY SERVICES SECTION */}
       <ComprehensiveServicesSection />
@@ -443,37 +340,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* LIVE METRICS STRIP */}
-      <section className="py-12 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            <LiveAnimatedCounter
-              end={1}
-              prefix="#"
-              label="Dr. Hemant Singh PT"
-              sublabel="BPT Qualified Physiotherapist"
-            />
-            <LiveAnimatedCounter
-              end={4}
-              suffix=" Primary Areas"
-              label="Gwalior Coverage"
-              sublabel="Thatipur, Suresh Nagar, Morar & City Centre"
-            />
-            <LiveAnimatedCounter
-              end={100}
-              suffix="%"
-              label="Personalised 1-on-1"
-              sublabel="Individual Assessment & Exercise Care"
-            />
-            <LiveAnimatedCounter
-              end={4}
-              suffix="-Step"
-              label="Rehabilitation Method"
-              sublabel="Assess, Plan, Treat & Progress"
-            />
-          </div>
-        </div>
-      </section>
+
 
 
 

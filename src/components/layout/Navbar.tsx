@@ -9,9 +9,17 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-100 shadow-sm">
-      {/* Top Notification / Trust Bar */}
-      <div className="bg-teal-900 text-teal-50 text-xs py-2 px-4 text-center font-medium">
-        <span>📍 Serving All Across Gwalior • Clinic Visits & Home Physiotherapy</span>
+      {/* Top Announcement / Location & Hours Bar */}
+      <div className="bg-teal-900 text-white text-xs py-2.5 px-4 font-medium">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-2.5 sm:gap-5 text-center">
+          <span>📍 Serving All Across Gwalior</span>
+          <span className="hidden md:inline text-teal-700">|</span>
+          <span>🏠 Clinic Visits & Home Physiotherapy</span>
+          <span className="hidden md:inline text-teal-700">|</span>
+          <span>🕒 Mon - Sun: 9:00 AM - 9:00 PM</span>
+          <span className="hidden sm:inline text-teal-700">|</span>
+          <a href={`tel:${CLINIC_DATA.contact.rawPhone}`} className="hover:text-emerald-300 font-bold transition">📞 {CLINIC_DATA.contact.phone}</a>
+        </div>
       </div>
 
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">

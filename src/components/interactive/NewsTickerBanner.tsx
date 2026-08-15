@@ -11,7 +11,8 @@ export default function NewsTickerBanner() {
 
   const tickerItems = [
     "🚨 Home Physiotherapy Visits Available across Thatipur, Suresh Nagar & Gwalior - Book Online Today!",
-    "🩺 Dr. Hemant Singh PT (BPT) - Sports & Musculoskeletal Rehabilitation Specialist",
+    "🧠 Specialized Care: Neurological Rehabilitation, Stroke Rehabilitation & Paralysis Rehabilitation",
+    "🩺 Dr. Hemant Singh PT (BPT) - Sports, Neurological & Musculoskeletal Rehabilitation Specialist",
     `📞 Emergency Consultation & Booking Line: ${CLINIC_DATA.contact.phone}`,
     ...posts.map((p) => `📌 ${p.type.toUpperCase()}: ${p.title} (${p.category})`),
   ];

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CLINIC_DATA } from "@/constants/business";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import JsonLd from "@/components/seo/JsonLd";
-import InteractiveSymptomFinder from "@/components/interactive/InteractiveSymptomFinder";
+
 import LiveAnimatedCounter from "@/components/interactive/LiveAnimatedCounter";
 import LiveStatusBadge from "@/components/interactive/LiveStatusBadge";
 import LiveBlogCarousel from "@/components/interactive/LiveBlogCarousel";
@@ -119,7 +119,7 @@ export default function HomePage() {
                 <LiveStatusBadge />
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-[1.15]">
-                The Best Physiotherapy in Gwalior — <span className="text-teal-800">Clinic & Home Visits</span>
+                The Best Physiotherapy Clinic in Gwalior — <span className="text-teal-800">Clinic & Home Visits</span>
               </h1>
               <p className="text-slate-700 text-base sm:text-lg leading-relaxed max-w-xl">
                 We help you move better, feel better and live a pain-free life. Providing the best physiotherapy, thorough clinical assessment, and evidence-based exercise rehabilitation in Thatipur, Gwalior.
@@ -475,12 +475,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* INTERACTIVE SYMPTOM FINDER SECTION */}
-      <section className="py-16 bg-stone-100/70 border-b border-slate-200" id="symptom-checker">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <InteractiveSymptomFinder />
-        </div>
-      </section>
+
 
       {/* LIVE PATIENT BLOG & HEALTH POSTERS SLIDE CAROUSEL SECTION */}
       <section className="py-16 bg-white">

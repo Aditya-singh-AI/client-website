@@ -159,7 +159,7 @@ export function ClinicDataProvider({ children }: { children: React.ReactNode }) 
   const [settings, setSettings] = useState<ClinicSettings>(DEFAULT_SETTINGS);
   const [reviews, setReviews] = useState<PatientReview[]>(INITIAL_REVIEWS);
 
-  // Sync with LocalStorage
+  // Sync with Server API (/api/enquiries) & LocalStorage
   useEffect(() => {
     const storedPosts = localStorage.getItem("nitya_admin_posts");
     const storedEnquiries = localStorage.getItem("nitya_admin_enquiries");
@@ -172,6 +172,17 @@ export function ClinicDataProvider({ children }: { children: React.ReactNode }) 
     if (storedPhotos) setPhotos(JSON.parse(storedPhotos));
     if (storedSettings) setSettings(JSON.parse(storedSettings));
     if (storedReviews) setReviews(JSON.parse(storedReviews));
+
+    // Fetch shared server-side enquiries from API
+    fetch("/api/enquiries")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.success && Array.isArray(data.enquiries)) {
+          setEnquiries(data.enquiries);
+          localStorage.setItem("nitya_admin_enquiries", JSON.stringify(data.enquiries));
+        }
+      })
+      .catch((err) => console.error("Failed to fetch server enquiries:", err));
   }, []);
 
   const addPost = useCallback((post: BlogOrPosterItem) => {
@@ -197,11 +208,27 @@ export function ClinicDataProvider({ children }: { children: React.ReactNode }) 
       status: "Pending",
       createdAt: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
     };
+
     setEnquiries((prev) => {
       const updated = [newEnq, ...prev];
       localStorage.setItem("nitya_admin_enquiries", JSON.stringify(updated));
       return updated;
     });
+
+    // Send to global server API so all admin logins see it on any device
+    fetch("/api/enquiries", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(enqData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.success && Array.isArray(data.enquiries)) {
+          setEnquiries(data.enquiries);
+          localStorage.setItem("nitya_admin_enquiries", JSON.stringify(data.enquiries));
+        }
+      })
+      .catch((err) => console.error("Failed to sync new enquiry with server:", err));
   }, []);
 
   const updateEnquiryStatus = useCallback((id: string, status: AppointmentEnquiry["status"]) => {
@@ -210,6 +237,12 @@ export function ClinicDataProvider({ children }: { children: React.ReactNode }) 
       localStorage.setItem("nitya_admin_enquiries", JSON.stringify(updated));
       return updated;
     });
+
+    fetch("/api/enquiries", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, status }),
+    }).catch((err) => console.error("Failed to update status on server:", err));
   }, []);
 
   const deleteEnquiry = useCallback((id: string) => {
@@ -218,6 +251,10 @@ export function ClinicDataProvider({ children }: { children: React.ReactNode }) 
       localStorage.setItem("nitya_admin_enquiries", JSON.stringify(updated));
       return updated;
     });
+
+    fetch(`/api/enquiries?id=${id}`, {
+      method: "DELETE",
+    }).catch((err) => console.error("Failed to delete enquiry on server:", err));
   }, []);
 
   const addPhoto = useCallback((photo: GalleryPhoto) => {

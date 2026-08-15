@@ -5,9 +5,13 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name, phone, area, serviceType, preferredDate, concern } = body;
 
-    const recipientEmail = "nityahemantsingh@gmail.com";
+    // Both admin emails receive every enquiry notification
+    const recipientEmails = [
+      "nityahemantsingh@gmail.com",
+      "officialaadi.05@gmail.com",
+    ];
 
-    // Format HTML email content
+    // Format email content
     const emailSubject = `🚨 New Patient Enquiry: ${name || "Web Visitor"} (${serviceType || "Physiotherapy"})`;
     
     const emailText = `
@@ -27,42 +31,58 @@ Log in to Admin Dashboard to manage all bookings:
 https://nityaphysiotherapy.com/admin/dashboard
 `;
 
-    // 1. Check if Resend API key is available
+    // Check if Resend API key is available
     const resendApiKey = process.env.RESEND_API_KEY;
 
-    if (resendApiKey) {
-      const resendRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${resendApiKey}`,
-        },
-        body: JSON.stringify({
-          from: "Nitya Physiotherapy Website <onboarding@resend.dev>",
-          to: [recipientEmail],
-          subject: emailSubject,
-          text: emailText,
-        }),
+    if (!resendApiKey) {
+      console.warn("[EMAIL] ⚠️ RESEND_API_KEY is not set. Email will NOT be sent. Add it to your Vercel environment variables.");
+      return NextResponse.json({
+        success: true,
+        emailSent: false,
+        message: "Enquiry saved but email not sent — RESEND_API_KEY is missing.",
       });
-
-      if (!resendRes.ok) {
-        const errorData = await resendRes.json();
-        console.error("Resend API Email Error:", errorData);
-      }
     }
 
-    // 2. Server side audit log for backup
-    console.log(`[ENQUIRY NOTIFICATION] Direct email dispatch attempt to ${recipientEmail} for patient ${name} (${phone})`);
+    // Send email to all recipients
+    const resendRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${resendApiKey}`,
+      },
+      body: JSON.stringify({
+        from: "Nitya Physiotherapy Website <onboarding@resend.dev>",
+        to: recipientEmails,
+        subject: emailSubject,
+        text: emailText,
+      }),
+    });
+
+    const resendData = await resendRes.json();
+
+    if (!resendRes.ok) {
+      console.error("[EMAIL] ❌ Resend API Error:", JSON.stringify(resendData));
+      return NextResponse.json({
+        success: true,
+        emailSent: false,
+        error: resendData,
+        message: "Enquiry saved but email failed to send.",
+      });
+    }
+
+    console.log(`[EMAIL] ✅ Notification sent to ${recipientEmails.join(", ")} for patient ${name} (${phone})`);
 
     return NextResponse.json({
       success: true,
-      message: "Enquiry submitted successfully and notification dispatched to Dr. Hemant.",
+      emailSent: true,
+      message: "Enquiry submitted and email notification sent to admins.",
     });
   } catch (error) {
-    console.error("Error sending enquiry email notification:", error);
+    console.error("[EMAIL] ❌ Critical error sending enquiry email:", error);
     return NextResponse.json(
       { success: false, error: "Failed to dispatch email notification" },
       { status: 500 }
     );
   }
 }
+

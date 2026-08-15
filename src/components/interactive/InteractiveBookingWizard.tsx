@@ -108,7 +108,7 @@ export default function InteractiveBookingWizard() {
                     id: "home",
                     title: "Home Visit",
                     loc: "At Your Residence",
-                    desc: "Dr. Hemant visits your home anywhere in Gwalior.",
+                    desc: "Our Team visits your home anywhere in Gwalior.",
                     badge: "Popular in Gwalior"
                   },
                   {

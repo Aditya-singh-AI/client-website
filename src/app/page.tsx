@@ -169,7 +169,7 @@ export default function HomePage() {
                   <span className="text-teal-700 text-base">🏠</span>
                   <div>
                     <strong className="block text-slate-900 font-bold">Home Visit</strong>
-                    <span>Available in Thatipur & Nearby Areas</span>
+                    <span>Available in Gwalior</span>
                   </div>
                 </div>
               </div>

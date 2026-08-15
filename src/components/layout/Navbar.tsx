@@ -11,7 +11,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-100 shadow-sm">
       {/* Top Notification / Trust Bar */}
       <div className="bg-teal-900 text-teal-50 text-xs py-2 px-4 text-center font-medium">
-        <span>📍 Serving Thatipur, Suresh Nagar & Across Gwalior • Clinic Visits & Home Physiotherapy</span>
+        <span>📍 Serving All Across Gwalior • Clinic Visits & Home Physiotherapy</span>
       </div>
 
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">

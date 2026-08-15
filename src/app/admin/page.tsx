@@ -43,7 +43,7 @@ export default function AdminLoginPage() {
         {/* Clinic Identity */}
         <div className="text-center space-y-2">
           <div className="bg-white p-3 rounded-2xl border border-teal-600/40 inline-block mx-auto shadow-lg shadow-teal-900/50">
-            <img src="/logo.png" alt="Nitya Physiotherapy Logo" className="h-14 w-auto object-contain mx-auto" />
+            <img src="/logo.webp" alt="Nitya Physiotherapy Logo" className="h-14 w-auto object-contain mx-auto" />
           </div>
           <h1 className="text-2xl font-black text-white tracking-tight">Clinic Administration</h1>
           <p className="text-xs text-teal-300 font-medium">{CLINIC_DATA.name}</p>

@@ -40,7 +40,7 @@ export default function Footer() {
         {/* Col 1: Contact Us */}
         <div className="lg:col-span-4 space-y-4">
           <div className="bg-white p-2.5 rounded-xl inline-block shadow-sm">
-            <img src="/logo.png" alt="Nitya Physiotherapy Logo" className="h-12 w-auto object-contain" />
+            <img src="/logo.webp" alt="Nitya Physiotherapy Logo" className="h-12 w-auto object-contain" />
           </div>
           <h3 className="text-white font-bold text-base uppercase tracking-wider">{CLINIC_DATA.name}</h3>
           

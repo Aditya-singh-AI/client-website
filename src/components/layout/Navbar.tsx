@@ -18,7 +18,7 @@ export default function Navbar() {
         {/* Brand Logo / Identity */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <img
-            src="/logo.png"
+            src="/logo.webp"
             alt="Nitya Physiotherapy Clinic Logo"
             className="h-11 sm:h-12 w-auto object-contain"
           />

@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     "Musculoskeletal physiotherapy Gwalior"
   ],
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo.webp",
+    shortcut: "/logo.webp",
+    apple: "/logo.webp",
   },
   metadataBase: new URL("https://nityaphysiotherapy.com"),
 };

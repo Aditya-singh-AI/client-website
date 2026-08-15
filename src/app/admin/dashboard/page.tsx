@@ -164,7 +164,7 @@ export default function AdminDashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="bg-white p-1.5 rounded-lg">
-              <img src="/logo.png" alt="Nitya Physiotherapy Logo" className="h-8 w-auto object-contain" />
+              <img src="/logo.webp" alt="Nitya Physiotherapy Logo" className="h-8 w-auto object-contain" />
             </div>
             <div>
               <h1 className="font-extrabold text-sm sm:text-base leading-none">Nitya Clinic Admin Portal</h1>

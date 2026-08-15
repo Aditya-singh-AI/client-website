@@ -5,10 +5,13 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name, phone, area, serviceType, preferredDate, concern } = body;
 
-    // Both admin emails receive every enquiry notification
+    // Admin emails to receive every enquiry notification
+    // NOTE: With Resend free tier (onboarding@resend.dev sender), only the account
+    // owner's email can receive. Once a custom domain is verified on resend.com/domains,
+    // both emails will receive notifications.
     const recipientEmails = [
-      "nityahemantsingh@gmail.com",
       "officialaadi.05@gmail.com",
+      // "nityahemantsingh@gmail.com", // Enable after verifying domain on Resend
     ];
 
     // Format email content

@@ -1,14 +1,29 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import { AppointmentEnquiry } from "@/context/ClinicDataContext";
+import { Redis } from "@upstash/redis";
 
-// Server-side persistent storage file path
-const DATA_FILE = path.join(process.cwd(), "data_enquiries.json");
+// Upstash Redis instance (credentials from environment variables)
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL || "",
+  token: process.env.UPSTASH_REDIS_REST_TOKEN || "",
+});
 
-const INITIAL_ENQUIRIES: AppointmentEnquiry[] = [
+const ENQUIRIES_KEY = "nitya_global_enquiries";
+
+interface StoredEnquiry {
+  id: string;
+  name: string;
+  phone: string;
+  serviceType: "clinic" | "home" | "online";
+  area: string;
+  preferredDate: string;
+  concern: string;
+  status: "Pending" | "Confirmed" | "Completed" | "Cancelled";
+  createdAt: string;
+}
+
+const SEED_ENQUIRIES: StoredEnquiry[] = [
   {
-    id: "enq-1",
+    id: "enq-seed-1",
     name: "Amitabh Dubey",
     phone: "+91 98260 00000",
     serviceType: "home",
@@ -19,7 +34,7 @@ const INITIAL_ENQUIRIES: AppointmentEnquiry[] = [
     createdAt: "Aug 14, 2026",
   },
   {
-    id: "enq-2",
+    id: "enq-seed-2",
     name: "Priya Sengar",
     phone: "+91 94251 11111",
     serviceType: "clinic",
@@ -31,41 +46,44 @@ const INITIAL_ENQUIRIES: AppointmentEnquiry[] = [
   },
 ];
 
-// Helper to read enquiries from server storage
-function getStoredEnquiries(): AppointmentEnquiry[] {
+// Helper: get all enquiries from Redis
+async function getEnquiries(): Promise<StoredEnquiry[]> {
   try {
-    if (fs.existsSync(DATA_FILE)) {
-      const data = fs.readFileSync(DATA_FILE, "utf8");
-      return JSON.parse(data);
+    const data = await redis.get<StoredEnquiry[]>(ENQUIRIES_KEY);
+    if (data && Array.isArray(data) && data.length > 0) {
+      return data;
     }
+    // First time: seed default enquiries
+    await redis.set(ENQUIRIES_KEY, SEED_ENQUIRIES);
+    return SEED_ENQUIRIES;
   } catch (err) {
-    console.error("Error reading enquiries data file:", err);
+    console.error("Redis GET error:", err);
+    return SEED_ENQUIRIES;
   }
-  return INITIAL_ENQUIRIES;
 }
 
-// Helper to write enquiries to server storage
-function saveStoredEnquiries(enquiries: AppointmentEnquiry[]) {
+// Helper: save all enquiries to Redis
+async function saveEnquiries(enquiries: StoredEnquiry[]): Promise<void> {
   try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(enquiries, null, 2), "utf8");
+    await redis.set(ENQUIRIES_KEY, enquiries);
   } catch (err) {
-    console.error("Error saving enquiries data file:", err);
+    console.error("Redis SET error:", err);
   }
 }
 
-// GET: Return all global enquiries across all devices
+// ─── GET: Fetch all global enquiries (visible to every admin on every device) ───
 export async function GET() {
-  const enquiries = getStoredEnquiries();
+  const enquiries = await getEnquiries();
   return NextResponse.json({ success: true, enquiries });
 }
 
-// POST: Add new patient enquiry submitted from any device
+// ─── POST: Add a new patient booking enquiry (from any patient on any device) ───
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const currentEnquiries = getStoredEnquiries();
+    const currentEnquiries = await getEnquiries();
 
-    const newEnquiry: AppointmentEnquiry = {
+    const newEnquiry: StoredEnquiry = {
       id: `enq-${Date.now()}`,
       name: body.name || "Patient Enquiry",
       phone: body.phone || "Not Provided",
@@ -74,11 +92,15 @@ export async function POST(req: Request) {
       preferredDate: body.preferredDate || "Earliest Available",
       concern: body.concern || "General Physical Therapy Evaluation",
       status: "Pending",
-      createdAt: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+      createdAt: new Date().toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }),
     };
 
     const updated = [newEnquiry, ...currentEnquiries];
-    saveStoredEnquiries(updated);
+    await saveEnquiries(updated);
 
     return NextResponse.json({ success: true, enquiry: newEnquiry, enquiries: updated });
   } catch (err) {
@@ -87,33 +109,37 @@ export async function POST(req: Request) {
   }
 }
 
-// PATCH: Update status (Pending -> Confirmed / Completed / Cancelled)
+// ─── PATCH: Update enquiry status (Pending → Confirmed / Completed / Cancelled) ───
 export async function PATCH(req: Request) {
   try {
     const body = await req.json();
     const { id, status } = body;
-    const currentEnquiries = getStoredEnquiries();
+    const currentEnquiries = await getEnquiries();
 
-    const updated = currentEnquiries.map((e) => (e.id === id ? { ...e, status } : e));
-    saveStoredEnquiries(updated);
+    const updated = currentEnquiries.map((e) =>
+      e.id === id ? { ...e, status } : e
+    );
+    await saveEnquiries(updated);
 
     return NextResponse.json({ success: true, enquiries: updated });
   } catch (err) {
     console.error("Error updating enquiry status:", err);
-    return NextResponse.json({ success: false, error: "Failed to update enquiry status" }, { status: 500 });
+    return NextResponse.json({ success: false, error: "Failed to update status" }, { status: 500 });
   }
 }
 
-// DELETE: Remove an enquiry
+// ─── DELETE: Remove an enquiry permanently ───
 export async function DELETE(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
-    if (!id) return NextResponse.json({ success: false, error: "Missing ID" }, { status: 400 });
+    if (!id) {
+      return NextResponse.json({ success: false, error: "Missing enquiry ID" }, { status: 400 });
+    }
 
-    const currentEnquiries = getStoredEnquiries();
+    const currentEnquiries = await getEnquiries();
     const updated = currentEnquiries.filter((e) => e.id !== id);
-    saveStoredEnquiries(updated);
+    await saveEnquiries(updated);
 
     return NextResponse.json({ success: true, enquiries: updated });
   } catch (err) {

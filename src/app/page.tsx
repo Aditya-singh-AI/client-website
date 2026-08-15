@@ -7,6 +7,7 @@ import LiveAnimatedCounter from "@/components/interactive/LiveAnimatedCounter";
 import LiveStatusBadge from "@/components/interactive/LiveStatusBadge";
 import LiveBlogCarousel from "@/components/interactive/LiveBlogCarousel";
 import NewsTickerBanner from "@/components/interactive/NewsTickerBanner";
+import ComprehensiveServicesSection from "@/components/home/ComprehensiveServicesSection";
 
 export default function HomePage() {
   const faqs = [
@@ -214,33 +215,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* OUR PHYSIOTHERAPY SERVICES GRID (8 ICON CARDS) */}
-      <section className="py-16 bg-white border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">Our Physiotherapy Services</h2>
-            <p className="text-slate-600 text-xs sm:text-sm mt-2">Comprehensive musculoskeletal and physical rehabilitation care.</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {servicesGrid.map((item, idx) => (
-              <Link
-                key={idx}
-                href={item.link}
-                className="group bg-white p-5 rounded-2xl border border-slate-200 hover:border-teal-700 shadow-sm hover:shadow-md transition text-center space-y-3 flex flex-col items-center justify-between"
-              >
-                <div className="w-12 h-12 rounded-xl bg-teal-50 text-2xl flex items-center justify-center group-hover:scale-110 transition">
-                  {item.icon}
-                </div>
-                <div className="space-y-1">
-                  <h3 className="font-bold text-xs sm:text-sm text-slate-900 group-hover:text-teal-800 transition">{item.title}</h3>
-                  <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">{item.desc}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* COMPREHENSIVE 23 PHYSIOTHERAPY SERVICES SECTION */}
+      <ComprehensiveServicesSection />
 
       {/* AUTHENTIC CLINICAL CARE & REHABILITATION SHOWCASE */}
       <section className="py-16 bg-slate-900 text-white border-b border-slate-800">

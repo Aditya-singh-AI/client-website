@@ -27,6 +27,32 @@ export default function HomePhysiotherapyPage() {
           </p>
         </header>
 
+        <div className="space-y-6">
+          <h2 className="text-xl sm:text-2xl font-black text-slate-950">Our Home Visit Physiotherapy Treatments</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-4 bg-teal-50/50 rounded-xl border border-teal-100 space-y-1">
+              <h3 className="font-bold text-sm text-slate-900">1. Home Physiotherapy Gwalior</h3>
+              <p className="text-xs text-slate-600">Gwalior में घर पर personalized physiotherapy treatment. Pain relief, mobility improvement और recovery के लिए professional home visits.</p>
+            </div>
+            <div className="p-4 bg-teal-50/50 rounded-xl border border-teal-100 space-y-1">
+              <h3 className="font-bold text-sm text-slate-900">2. Home Physiotherapy After Paralysis</h3>
+              <p className="text-xs text-slate-600">Paralysis के बाद movement, strength, balance और daily activities improve करने के लिए personalized home physiotherapy and rehabilitation.</p>
+            </div>
+            <div className="p-4 bg-teal-50/50 rounded-xl border border-teal-100 space-y-1">
+              <h3 className="font-bold text-sm text-slate-900">3. Home Physiotherapy After Knee Replacement</h3>
+              <p className="text-xs text-slate-600">Knee replacement के बाद pain, stiffness और mobility improve करने के लिए guided physiotherapy treatment at home.</p>
+            </div>
+            <div className="p-4 bg-teal-50/50 rounded-xl border border-teal-100 space-y-1">
+              <h3 className="font-bold text-sm text-slate-900">4. Stroke Home Rehabilitation</h3>
+              <p className="text-xs text-slate-600">Stroke recovery के लिए home-based physiotherapy focused on strength, balance, walking, coordination और functional independence.</p>
+            </div>
+            <div className="p-4 bg-teal-50/50 sm:col-span-2 rounded-xl border border-teal-100 space-y-1">
+              <h3 className="font-bold text-sm text-slate-900">5. Elderly Home Physiotherapy</h3>
+              <p className="text-xs text-slate-600">Senior citizens के लिए safe home physiotherapy to improve mobility, balance, strength and reduce difficulty in daily activities.</p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-700">
           <div className="space-y-4 bg-slate-50 p-6 rounded-xl border border-slate-200">
             <h2 className="text-base font-bold text-slate-900">Who May Benefit From Home Visits?</h2>

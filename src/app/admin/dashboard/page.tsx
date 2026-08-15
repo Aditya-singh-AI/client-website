@@ -325,7 +325,22 @@ export default function AdminDashboardPage() {
                             <strong>Phone:</strong> {enq.phone} • <strong>Area:</strong> {enq.area}
                           </p>
                         </div>
-                        <span className="text-[11px] text-slate-400">{enq.createdAt}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[11px] text-slate-400">{enq.createdAt}</span>
+                          {(() => {
+                            const ts = (enq as any).timestamp;
+                            if (!ts) return null;
+                            const expiresAt = ts + 4 * 24 * 60 * 60 * 1000;
+                            const remaining = expiresAt - Date.now();
+                            if (remaining <= 0) return <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full">Expired</span>;
+                            const hoursLeft = Math.floor(remaining / (1000 * 60 * 60));
+                            const daysLeft = Math.floor(hoursLeft / 24);
+                            const hrs = hoursLeft % 24;
+                            const label = daysLeft > 0 ? `${daysLeft}d ${hrs}h left` : `${hrs}h left`;
+                            const color = daysLeft >= 2 ? "text-emerald-700 bg-emerald-50" : daysLeft >= 1 ? "text-amber-700 bg-amber-50" : "text-rose-700 bg-rose-50";
+                            return <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${color}`}>⏱ {label}</span>;
+                          })()}
+                        </div>
                       </div>
 
                       <div className="text-xs bg-white p-3 rounded-lg border border-slate-200 space-y-1">

@@ -9,6 +9,10 @@ const redis = new Redis({
 
 const ENQUIRIES_KEY = "nitya_global_enquiries";
 
+// ─── Auto-expiry: 4 days in milliseconds ───
+const EXPIRY_DAYS = 4;
+const EXPIRY_MS = EXPIRY_DAYS * 24 * 60 * 60 * 1000;
+
 interface StoredEnquiry {
   id: string;
   name: string;
@@ -19,6 +23,7 @@ interface StoredEnquiry {
   concern: string;
   status: "Pending" | "Confirmed" | "Completed" | "Cancelled";
   createdAt: string;
+  timestamp: number; // Unix ms timestamp for auto-expiry
 }
 
 const SEED_ENQUIRIES: StoredEnquiry[] = [
@@ -32,6 +37,7 @@ const SEED_ENQUIRIES: StoredEnquiry[] = [
     concern: "Post-surgery knee mobilization after orthopedic discharge",
     status: "Pending",
     createdAt: "Aug 14, 2026",
+    timestamp: Date.now(),
   },
   {
     id: "enq-seed-2",
@@ -43,15 +49,31 @@ const SEED_ENQUIRIES: StoredEnquiry[] = [
     concern: "Cervical neck stiffness from prolonged laptop work",
     status: "Confirmed",
     createdAt: "Aug 13, 2026",
+    timestamp: Date.now(),
   },
 ];
 
-// Helper: get all enquiries from Redis
+// ─── Helper: Remove enquiries older than 4 days ───
+function purgeExpired(enquiries: StoredEnquiry[]): StoredEnquiry[] {
+  const cutoff = Date.now() - EXPIRY_MS;
+  return enquiries.filter((e) => {
+    // If an enquiry has no timestamp (legacy), assign it now and keep it
+    if (!e.timestamp) return true;
+    return e.timestamp > cutoff;
+  });
+}
+
+// ─── Helper: Get all enquiries from Redis (auto-cleans expired) ───
 async function getEnquiries(): Promise<StoredEnquiry[]> {
   try {
     const data = await redis.get<StoredEnquiry[]>(ENQUIRIES_KEY);
     if (data && Array.isArray(data) && data.length > 0) {
-      return data;
+      const cleaned = purgeExpired(data);
+      // If expired entries were removed, save the cleaned list back
+      if (cleaned.length !== data.length) {
+        await redis.set(ENQUIRIES_KEY, cleaned);
+      }
+      return cleaned;
     }
     // First time: seed default enquiries
     await redis.set(ENQUIRIES_KEY, SEED_ENQUIRIES);
@@ -62,7 +84,7 @@ async function getEnquiries(): Promise<StoredEnquiry[]> {
   }
 }
 
-// Helper: save all enquiries to Redis
+// ─── Helper: Save all enquiries to Redis ───
 async function saveEnquiries(enquiries: StoredEnquiry[]): Promise<void> {
   try {
     await redis.set(ENQUIRIES_KEY, enquiries);
@@ -71,20 +93,21 @@ async function saveEnquiries(enquiries: StoredEnquiry[]): Promise<void> {
   }
 }
 
-// ─── GET: Fetch all global enquiries (visible to every admin on every device) ───
+// ─── GET: Fetch all global enquiries (auto-purges expired) ───
 export async function GET() {
   const enquiries = await getEnquiries();
   return NextResponse.json({ success: true, enquiries });
 }
 
-// ─── POST: Add a new patient booking enquiry (from any patient on any device) ───
+// ─── POST: Add a new patient booking enquiry ───
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const currentEnquiries = await getEnquiries();
 
+    const now = Date.now();
     const newEnquiry: StoredEnquiry = {
-      id: `enq-${Date.now()}`,
+      id: `enq-${now}`,
       name: body.name || "Patient Enquiry",
       phone: body.phone || "Not Provided",
       serviceType: body.serviceType || "clinic",
@@ -92,11 +115,12 @@ export async function POST(req: Request) {
       preferredDate: body.preferredDate || "Earliest Available",
       concern: body.concern || "General Physical Therapy Evaluation",
       status: "Pending",
-      createdAt: new Date().toLocaleDateString("en-US", {
+      createdAt: new Date(now).toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
         year: "numeric",
       }),
+      timestamp: now,
     };
 
     const updated = [newEnquiry, ...currentEnquiries];
@@ -109,7 +133,7 @@ export async function POST(req: Request) {
   }
 }
 
-// ─── PATCH: Update enquiry status (Pending → Confirmed / Completed / Cancelled) ───
+// ─── PATCH: Update enquiry status ───
 export async function PATCH(req: Request) {
   try {
     const body = await req.json();

@@ -33,7 +33,8 @@ export const metadata: Metadata = {
     "Stroke Physiotherapy in Gwalior",
     "Paralysis Physiotherapy Home Visit in Gwalior",
     "Top 5 Physiotherapy clinic in Gwalior",
-    "Top 10 Physiotherapy clinic in Gwalior"
+    "Top 10 Physiotherapy clinic in Gwalior",
+    "Best Physiotherapist in Gwalior for Post-Surgery Rehab",
   ],
   openGraph: {
     title: "Nitya Physiotherapy | The Best Physiotherapy Clinic in Gwalior",

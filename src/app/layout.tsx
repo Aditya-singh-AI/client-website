@@ -53,6 +53,9 @@ export const metadata: Metadata = {
     apple: "/logo.webp",
   },
   metadataBase: new URL("https://nityaphysiotherapy.com"),
+  verification: {
+    google: "0nayKM40BRNFT4UnC4S6BDzR37mVJkZWV0lOQfPCoaE",
+  },
 };
 
 export default function RootLayout({

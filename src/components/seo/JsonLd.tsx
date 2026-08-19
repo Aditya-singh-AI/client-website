@@ -6,6 +6,8 @@ export default function JsonLd() {
     "@type": "PhysiotherapyClinic",
     "name": CLINIC_DATA.name,
     "description": "Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior, Thatipur. Personalised musculoskeletal rehabilitation and home visit physiotherapy led by Dr. Hemant Singh PT (BPT).",
+    "url": "https://nityaphysiotherapy.com",
+    "image": "https://nityaphysiotherapy.com/images/dr-hemant-solo.jpg",
     "telephone": CLINIC_DATA.contact.phone,
     "email": CLINIC_DATA.contact.email,
     "address": {

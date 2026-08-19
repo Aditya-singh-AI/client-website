@@ -38,14 +38,21 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Nitya Physiotherapy | The Best Physiotherapy Clinic in Gwalior",
     description: `Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior & Thatipur. Clinical joint & back pain rehabilitation, sports injury care, and home visit physiotherapy by ${CLINIC_DATA.practitioner.name} (${CLINIC_DATA.practitioner.qualifications}).`,
-    images: ["/logo.webp"],
+    images: [
+      {
+        url: "https://nityaphysiotherapy.com/images/dr-hemant-solo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Nitya Physiotherapy Assessment and Clinical Treatment in Gwalior",
+      },
+    ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Nitya Physiotherapy | The Best Physiotherapy Clinic in Gwalior",
     description: `Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior & Thatipur. Clinical joint & back pain rehabilitation by ${CLINIC_DATA.practitioner.name}.`,
-    images: ["/logo.webp"],
+    images: ["https://nityaphysiotherapy.com/images/dr-hemant-solo.jpg"],
   },
   icons: {
     icon: "/logo.webp",

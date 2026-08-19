@@ -13,7 +13,7 @@ export default function HomePage() {
   const faqs = [
     {
       question: "What should I expect during my initial physiotherapy assessment?",
-      answer: "During your first session, Dr. Hemant Singh PT will take a thorough clinical history, assess joint mobility, muscle strength, posture, and nerve sensitivity, and discuss your physical limitations to establish a tailored rehabilitation plan."
+      answer: "During your first session, Nitya Physiotherapy will take a thorough clinical history, assess joint mobility, muscle strength, posture, and nerve sensitivity, and discuss your physical limitations to establish a tailored rehabilitation plan."
     },
     {
       question: "Do you offer physiotherapy home visits across Gwalior?",
@@ -24,8 +24,8 @@ export default function HomePage() {
       answer: "A referral is not strictly mandatory for an initial physical therapy evaluation. However, if you have recent X-rays, MRI scans, or post-surgical discharge summaries from your orthopedic surgeon, please keep them available for review."
     },
     {
-      question: "What is the primary clinical focus of Dr. Hemant Singh PT?",
-      answer: "Dr. Hemant Singh PT holds a Bachelor of Physiotherapy (BPT) with a primary clinical interest in Sports and Musculoskeletal Physiotherapy, helping patients regain pain-free movement through active exercise rehabilitation."
+      question: "What is the primary clinical focus of Nitya Physiotherapy?",
+      answer: "Nitya Physiotherapy specializes in Sports and Musculoskeletal Physiotherapy, helping patients regain pain-free movement through active exercise rehabilitation."
     },
     {
       question: "How do I schedule a clinic visit or home rehabilitation session?",
@@ -122,9 +122,7 @@ export default function HomePage() {
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-teal-400">Authentic Patient Care</span>
               <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">Live Clinical Practice & Treatment Sessions</h2>
-              <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-xl">
-                Real photos from Dr. Hemant Singh PT's clinical assessments and specialized rehabilitation sessions in Thatipur, Gwalior.
-              </p>
+
             </div>
             <Link
               href="/gallery"
@@ -150,7 +148,7 @@ export default function HomePage() {
               <div className="px-2 pb-1 space-y-1">
                 <h3 className="font-bold text-white text-sm">1-on-1 Joint & Musculoskeletal Therapy</h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Thorough knee evaluation and manual movement re-education session with Dr. Hemant.
+                  Thorough knee evaluation and manual movement re-education session at Nitya Physiotherapy.
                 </p>
               </div>
             </div>
@@ -208,7 +206,7 @@ export default function HomePage() {
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden relative group bg-slate-100">
                   <img
                     src="/images/dr-hemant-clinical-grid-1.jpg"
-                    alt="Dr. Hemant Singh PT Clinical Treatment & Consultation Sessions"
+                    alt="Nitya Physiotherapy Clinical Treatment & Consultation Sessions"
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent pointer-events-none" />
@@ -268,7 +266,7 @@ export default function HomePage() {
                   href="/physiotherapist/dr-hemant-singh"
                   className="bg-teal-800 hover:bg-teal-900 text-white font-bold text-xs px-6 py-3 rounded-xl shadow transition inline-block"
                 >
-                  Learn More About Dr. Hemant Singh PT →
+                  Learn More About Nitya Physiotherapy →
                 </Link>
               </div>
             </div>

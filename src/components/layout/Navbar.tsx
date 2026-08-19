@@ -100,7 +100,7 @@ export default function Navbar() {
               href={`tel:${CLINIC_DATA.contact.rawPhone}`}
               className="w-full text-center bg-emerald-700 text-white py-2.5 rounded-md font-bold text-xs"
             >
-              📞 Call Now ({CLINIC_DATA.contact.phone})
+              📞 Call Now
             </a>
             <Link
               href="/book-appointment"

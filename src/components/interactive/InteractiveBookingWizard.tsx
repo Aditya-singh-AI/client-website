@@ -67,7 +67,7 @@ export default function InteractiveBookingWizard() {
           </div>
           <h3 className="text-xl font-extrabold text-slate-900">Appointment Request Sent Successfully</h3>
           <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
-            Your appointment details have been recorded and sent directly to <strong>Dr. Hemant Singh PT</strong>&apos;s admin dashboard. Our team will contact you shortly to confirm your schedule.
+            Your appointment details have been recorded and sent directly to <strong>Nitya Physiotherapy</strong>&apos;s admin dashboard. Our team will contact you shortly to confirm your schedule.
           </p>
 
           <div className="bg-teal-50 border border-teal-200 rounded-xl p-4 max-w-md mx-auto text-left text-xs space-y-1 text-teal-950">
@@ -82,7 +82,7 @@ export default function InteractiveBookingWizard() {
               href={`tel:${CLINIC_DATA.contact.rawPhone}`}
               className="bg-teal-800 hover:bg-teal-900 text-white text-xs font-bold px-6 py-3 rounded-xl transition shadow"
             >
-              📞 Call Dr. Hemant Directly ({CLINIC_DATA.contact.phone})
+              📞 Call Now
             </a>
             <button
               onClick={() => {

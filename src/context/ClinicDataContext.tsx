@@ -88,7 +88,7 @@ const INITIAL_PHOTOS: GalleryPhoto[] = [
     title: "1-on-1 Knee & Musculoskeletal Rehabilitation Assessment",
     category: "Treatment",
     imageUrl: "/images/dr-hemant-solo.jpg",
-    caption: "Dr. Hemant Singh PT evaluating joint range of motion and delivering targeted physical therapy in Thatipur, Gwalior.",
+    caption: "Nitya Physiotherapy evaluating joint range of motion and delivering targeted physical therapy in Thatipur, Gwalior.",
   },
   {
     id: "photo-grid-1",
@@ -111,7 +111,7 @@ const INITIAL_REVIEWS: PatientReview[] = [
     id: "rev-1",
     patientName: "Rajesh Sharma",
     condition: "Lower Back Pain & Sciatica",
-    reviewText: "Dr. Hemant's assessment was very thorough. The guided exercises helped me resume daily walking comfortably in just three weeks.",
+    reviewText: "The assessment at Nitya Physiotherapy was very thorough. The guided exercises helped me resume daily walking comfortably in just three weeks.",
     serviceType: "Clinic Consultation (Thatipur)",
     date: "July 2026",
   },

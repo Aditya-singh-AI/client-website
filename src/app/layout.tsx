@@ -28,7 +28,12 @@ export const metadata: Metadata = {
     "Home physiotherapy Gwalior",
     "Sports physiotherapy Gwalior",
     "Dr Hemant Singh PT",
-    "Musculoskeletal physiotherapy Gwalior"
+    "Musculoskeletal physiotherapy Gwalior",
+    "Nitya Physiotherapy Gwalior",
+    "Stroke Physiotherapy in Gwalior",
+    "Paralysis Physiotherapy Home Visit in Gwalior",
+    "Top 5 Physiotherapy clinic in Gwalior",
+    "Top 10 Physiotherapy clinic in Gwalior"
   ],
   openGraph: {
     title: "Nitya Physiotherapy | The Best Physiotherapy Clinic in Gwalior",
@@ -56,8 +61,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-white text-slate-800 antialiased flex flex-col min-h-screen`}>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${inter.className} bg-white text-slate-800 antialiased flex flex-col min-h-screen`} suppressHydrationWarning>
         <ClinicDataProvider>
           <Navbar />
           <main className="flex-grow">{children}</main>

@@ -16,7 +16,7 @@ export default function MobileCTA() {
       </a>
 
       <a
-        href={`https://wa.me/${CLINIC_DATA.contact.rawPhone}?text=Hello%20Dr.%20Hemant,%20I%20would%20like%20to%20inquire%20about%20a%20physiotherapy%20appointment.`}
+        href={`https://wa.me/${CLINIC_DATA.contact.rawPhone}?text=Hello%20Nitya%20Physiotherapy,%20I%20would%20like%20to%20inquire%20about%20a%20physiotherapy%20appointment.`}
         target="_blank"
         rel="noopener noreferrer"
         className="flex-1 flex flex-col items-center justify-center py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 rounded text-center transition"

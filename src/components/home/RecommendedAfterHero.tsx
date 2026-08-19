@@ -8,14 +8,15 @@ import LiveAnimatedCounter from "@/components/interactive/LiveAnimatedCounter";
 
 export default function RecommendedAfterHero() {
   const specialties = [
-    { title: "Back & Neck Pain", icon: "🧘", desc: "Spine, posture & disc care" },
-    { title: "Sciatica Treatment", icon: "⚡", desc: "Nerve pain & leg numbness" },
-    { title: "Knee Pain Physiotherapy", icon: "🦵", desc: "Joint stiffness & arthritis" },
-    { title: "Shoulder Pain & Frozen Shoulder", icon: "💪", desc: "Range of motion restoration" },
+   
     { title: "Stroke & Neuro Rehabilitation", icon: "🧠", desc: "Post-stroke motor & balance" },
     { title: "Post-Surgery Rehabilitation", icon: "🩺", desc: "Safe mobility & TKR/THR rehab" },
     { title: "Sports Injury Rehabilitation", icon: "🏃", desc: "Tendon, ligament & strain care" },
     { title: "Home Physiotherapy", icon: "🏠", desc: "1-on-1 therapy at your home" },
+    { title: "Back & Neck Pain", icon: "🧘", desc: "Spine, posture & disc care" },
+    { title: "Sciatica Treatment", icon: "⚡", desc: "Nerve pain & leg numbness" },
+    { title: "Knee Pain Physiotherapy", icon: "🦵", desc: "Joint stiffness & arthritis" },
+    { title: "Shoulder Pain & Frozen Shoulder", icon: "💪", desc: "Range of motion restoration" }
   ];
 
   return (
@@ -71,7 +72,7 @@ export default function RecommendedAfterHero() {
                   <span>📞</span> Call Now
                 </a>
                 <a
-                  href={`https://wa.me/${CLINIC_DATA.contact.rawPhone}?text=Hello%20Dr.%20Hemant,%20I%20would%20like%20to%20inquire%20about%20physiotherapy%20consultation.`}
+                  href={`https://wa.me/${CLINIC_DATA.contact.rawPhone}?text=Hello%20Nitya%20Physiotherapy,%20I%20would%20like%20to%20inquire%20about%20physiotherapy%20consultation.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-2 border-emerald-600 font-bold px-6 py-3.5 rounded-xl transition inline-flex items-center gap-2 text-sm"
@@ -93,7 +94,7 @@ export default function RecommendedAfterHero() {
                 <div className="aspect-[4/3] sm:aspect-[4/3] relative overflow-hidden">
                   <img
                     src="/images/dr-hemant-solo.jpg"
-                    alt="Dr. Hemant Singh PT treating patient"
+                    alt="Nitya Physiotherapy treating patient"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent pointer-events-none" />
@@ -105,8 +106,8 @@ export default function RecommendedAfterHero() {
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                     </span>
                     <div>
-                      <p className="text-[11px] font-black text-slate-900 leading-tight">Dr. Hemant Singh PT</p>
-                      <p className="text-[9px] font-semibold text-teal-700">Lead Physiotherapist (BPT)</p>
+                      <p className="text-[11px] font-black text-slate-900 leading-tight">Nitya Physiotherapy</p>
+                      <p className="text-[9px] font-semibold text-teal-700">Physiotherapy & Rehabilitation Center</p>
                     </div>
                   </div>
 

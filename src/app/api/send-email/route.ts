@@ -10,8 +10,8 @@ export async function POST(req: Request) {
     // owner's email can receive. Once a custom domain is verified on resend.com/domains,
     // both emails will receive notifications.
     const recipientEmails = [
-      "officialaadi.05@gmail.com",
-      // "nityahemantsingh@gmail.com", // Enable after verifying domain on Resend
+      "nityahemantsingh@gmail.com",
+      // Enable after verifying domain on Resend
     ];
 
     // Format email content

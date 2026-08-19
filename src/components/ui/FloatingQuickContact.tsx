@@ -6,7 +6,7 @@ import { CLINIC_DATA } from "@/constants/business";
 export default function FloatingQuickContact() {
   const [showTooltip, setShowTooltip] = useState<string | null>(null);
 
-  const whatsappUrl = `https://wa.me/${CLINIC_DATA.contact.rawPhone}?text=Hello%20Dr.%20Hemant%20Singh%20PT,%20I%20would%20like%20to%20book%20a%20physiotherapy%20consultation.`;
+  const whatsappUrl = `https://wa.me/${CLINIC_DATA.contact.rawPhone}?text=Hello%20Nitya%20Physiotherapy,%20I%20would%20like%20to%20book%20a%20physiotherapy%20consultation.`;
   const callUrl = `tel:${CLINIC_DATA.contact.rawPhone}`;
 
   return (
@@ -19,7 +19,7 @@ export default function FloatingQuickContact() {
           <span className="relative w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
         </div>
         <div className="text-[11px] font-bold leading-tight">
-          <span className="text-teal-300 block">Dr. Hemant Singh PT</span>
+          <span className="text-teal-300 block">Dr Hemant Singh</span>
           <span className="text-slate-300 text-[10px] font-medium">Available for Consultation</span>
         </div>
       </div>

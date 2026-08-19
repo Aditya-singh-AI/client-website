@@ -28,7 +28,7 @@ export default function ComprehensiveServicesSection() {
             Our Specialized Physiotherapy & Rehabilitation Services
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            From neurological recovery and orthopedic joint rehab to direct home visits and sports injury care in Thatipur, Gwalior under <strong>Dr. Hemant Singh PT (BPT)</strong>.
+            From neurological recovery and orthopedic joint rehab to direct home visits and sports injury care in Gwalior at <strong>Nitya Physiotherapy</strong>.
           </p>
         </div>
 
@@ -125,17 +125,17 @@ export default function ComprehensiveServicesSection() {
             Unsure Which Treatment Approach You Need?
           </h3>
           <p className="text-xs sm:text-sm text-slate-700 max-w-xl mx-auto leading-relaxed">
-            Dr. Hemant Singh PT performs a detailed initial physical assessment to determine whether clinic consultation or home visit physiotherapy is best for your condition.
+            Nitya Physiotherapy performs a detailed initial physical assessment to determine whether clinic consultation or home visit physiotherapy is best for your condition.
           </p>
           <div className="flex flex-wrap justify-center gap-3 pt-1">
             <a
               href="tel:+918269615097"
               className="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-6 py-3 rounded-xl transition shadow"
             >
-              📞 Call Dr. Hemant Directly (+91 82696 15097)
+              📞 Call Now
             </a>
             <a
-              href="https://wa.me/918269615097?text=Hello%20Dr.%20Hemant,%20I%20have%20a%20question%20about%20your%20services."
+              href="https://wa.me/918269615097?text=Hello%20Nitya%20Physiotherapy,%20I%20have%20a%20question%20about%20your%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white hover:bg-slate-100 text-emerald-800 border border-emerald-600 text-xs font-bold px-6 py-3 rounded-xl transition shadow-sm"

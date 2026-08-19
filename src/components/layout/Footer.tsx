@@ -129,7 +129,7 @@ export default function Footer() {
             <div className="p-6 bg-emerald-900/90 border border-emerald-500/50 rounded-2xl text-center space-y-2">
               <span className="text-3xl">✓</span>
               <p className="font-bold text-white text-sm">Appointment Request Received!</p>
-              <p className="text-xs text-emerald-100">Dr. Hemant Singh PT will contact you shortly to confirm session time.</p>
+              <p className="text-xs text-emerald-100">Nitya Physiotherapy will contact you shortly to confirm session time.</p>
               <button onClick={() => setSubmitted(false)} className="text-xs text-teal-200 underline pt-2">Send another request</button>
             </div>
           ) : (

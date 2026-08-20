@@ -39,7 +39,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Nitya Physiotherapy | The Best Physiotherapy Clinic in Gwalior",
     description: `Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior & Thatipur. Clinical joint & back pain rehabilitation, sports injury care, and home visit physiotherapy by ${CLINIC_DATA.practitioner.name} (${CLINIC_DATA.practitioner.qualifications}).`,
+    url: "https://nityaphysiotherapy.com",
+    siteName: "Nitya Physiotherapy Clinic",
     images: [
+      {
+        url: "https://nityaphysiotherapy.com/logo.png",
+        width: 1024,
+        height: 1024,
+        alt: "Nitya Physiotherapy Clinic Official Logo",
+      },
       {
         url: "https://nityaphysiotherapy.com/images/dr-hemant-solo.jpg",
         width: 1200,
@@ -53,12 +61,18 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nitya Physiotherapy | The Best Physiotherapy Clinic in Gwalior",
     description: `Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior & Thatipur. Clinical joint & back pain rehabilitation by ${CLINIC_DATA.practitioner.name}.`,
-    images: ["https://nityaphysiotherapy.com/images/dr-hemant-solo.jpg"],
+    images: ["https://nityaphysiotherapy.com/logo.png"],
   },
   icons: {
-    icon: "/logo.webp",
-    shortcut: "/logo.webp",
-    apple: "/logo.webp",
+    icon: [
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   metadataBase: new URL("https://nityaphysiotherapy.com"),
   verification: {

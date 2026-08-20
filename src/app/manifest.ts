@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Nitya Physiotherapy Clinic & Home Visits",
-    short_name: "Nitya Physio",
+    name: "Nitya Physiotherapy Clinic",
+    short_name: "Nitya Physiotherapy Clinic",
     description: "The Best Physiotherapy Clinic in Gwalior & Thatipur. Joint rehabilitation, sports injuries, and home visit physiotherapy.",
     start_url: "/",
     display: "standalone",
@@ -17,8 +17,20 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: "any",
       },
       {
-        src: "/apple-icon.png",
+        src: "/icon-96x96.png",
+        sizes: "96x96",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/apple-touch-icon.png",
         sizes: "180x180",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icon-192x192.png",
+        sizes: "192x192",
         type: "image/png",
         purpose: "any",
       },

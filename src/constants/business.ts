@@ -59,8 +59,8 @@ const conditionsList: ConditionItem[] = [
 ];
 
 export const BUSINESS_DETAILS = {
-  name: "Nitya Physiotherapy Clinic & Home Visits",
-  shortName: "Nitya Physiotherapy",
+  name: "Nitya Physiotherapy Clinic",
+  shortName: "Nitya Physiotherapy Clinic",
   practitioner: {
     name: "Dr. Hemant Singh PT",
     qualifications: "BPT",

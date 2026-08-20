@@ -32,7 +32,7 @@ export default function Navbar() {
           />
           <div className="flex flex-col">
             <span className="font-bold text-base sm:text-lg text-teal-950 tracking-tight leading-tight">
-              Nitya Physiotherapy
+              Nitya Physiotherapy Clinic
             </span>
             <span className="text-[10px] sm:text-[11px] text-teal-700 font-semibold tracking-wide uppercase">
               Clinic & Home Visits • Gwalior

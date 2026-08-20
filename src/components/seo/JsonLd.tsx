@@ -5,9 +5,23 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebSite",
+        "@id": "https://nityaphysiotherapy.com/#website",
+        "name": "Nitya Physiotherapy Clinic",
+        "alternateName": [
+          "Nitya Physiotherapy",
+          "Nitya Physiotherapy Clinic Gwalior",
+          "nityaphysiotherapy.com"
+        ],
+        "url": "https://nityaphysiotherapy.com/",
+        "publisher": {
+          "@id": "https://nityaphysiotherapy.com/#organization"
+        }
+      },
+      {
         "@type": "Organization",
         "@id": "https://nityaphysiotherapy.com/#organization",
-        "name": CLINIC_DATA.name,
+        "name": "Nitya Physiotherapy Clinic",
         "url": "https://nityaphysiotherapy.com",
         "logo": {
           "@type": "ImageObject",
@@ -20,8 +34,8 @@ export default function JsonLd() {
       {
         "@type": ["PhysiotherapyClinic", "LocalBusiness", "MedicalBusiness"],
         "@id": "https://nityaphysiotherapy.com/#clinic",
-        "name": CLINIC_DATA.name,
-        "description": "Nitya Physiotherapy provides the best physiotherapy clinic in Gwalior, Thatipur. Personalised musculoskeletal rehabilitation and home visit physiotherapy led by Dr. Hemant Singh PT (BPT).",
+        "name": "Nitya Physiotherapy Clinic",
+        "description": "Nitya Physiotherapy Clinic provides the best clinical physiotherapy & home visits in Gwalior, Thatipur. Personalised musculoskeletal rehabilitation led by Dr. Hemant Singh PT (BPT).",
         "url": "https://nityaphysiotherapy.com",
         "logo": "https://nityaphysiotherapy.com/logo.png",
         "image": [
